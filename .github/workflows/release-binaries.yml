@@ -31,22 +31,25 @@ jobs:
 
       - name: Build binaries for all platforms
         working-directory: loom/executas/loom-agent
+        env:
+          VERSION: ${{ github.event.inputs.version }}
         run: |
           mkdir -p dist
-          pkg . \
-            --targets node22-linux-x64,node22-macos-x64,node22-macos-arm64,node22-win-x64 \
-            --out-path dist \
-            --compress GZip
 
-      - name: Rename binaries to canonical names
-        working-directory: loom/executas/loom-agent/dist
-        run: |
-          # pkg outputs: loom-agent-linux, loom-agent-macos, loom-agent-macos-arm64, loom-agent-win.exe
-          # Rename to match executa.json paths exactly
-          mv loom-agent-linux            loom-agent-linux-x64        2>/dev/null || true
-          mv loom-agent-macos            loom-agent-darwin-x86_64    2>/dev/null || true
-          mv loom-agent-macos-arm64      loom-agent-darwin-arm64     2>/dev/null || true
-          mv loom-agent-win.exe          loom-agent-windows-x86_64.exe 2>/dev/null || true
+          echo "Building Linux x86_64..."
+          pkg . --target node22-linux-x64   --output dist/loom-agent-linux-x64
+
+          echo "Building macOS x86_64..."
+          pkg . --target node22-macos-x64   --output dist/loom-agent-darwin-x86_64
+
+          echo "Building macOS arm64..."
+          pkg . --target node22-macos-arm64 --output dist/loom-agent-darwin-arm64
+
+          echo "Building Windows x86_64..."
+          pkg . --target node22-win-x64     --output dist/loom-agent-windows-x86_64.exe
+
+          echo "--- Built files ---"
+          ls -lh dist/
 
       - name: Package binaries as archives
         working-directory: loom/executas/loom-agent/dist
@@ -55,12 +58,18 @@ jobs:
         run: |
           # Linux x86_64 → tar.gz
           tar -czf "loom-agent-${VERSION}-linux-x86_64.tar.gz"   loom-agent-linux-x64
+
           # macOS x86_64 → tar.gz
           tar -czf "loom-agent-${VERSION}-darwin-x86_64.tar.gz"  loom-agent-darwin-x86_64
+
           # macOS arm64 → tar.gz
           tar -czf "loom-agent-${VERSION}-darwin-arm64.tar.gz"   loom-agent-darwin-arm64
+
           # Windows x86_64 → zip
           zip "loom-agent-${VERSION}-windows-x86_64.zip"         loom-agent-windows-x86_64.exe
+
+          echo "--- Archives ---"
+          ls -lh *.tar.gz *.zip
 
       - name: Generate SHA-256 checksums
         working-directory: loom/executas/loom-agent/dist
