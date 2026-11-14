@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Loom backend executa — project memory engine and FlowDev workspace bridge",
   "main": "index.js",
+  "bin": "index.js",
   "type": "commonjs",
   "scripts": {
     "start": "node index.js",

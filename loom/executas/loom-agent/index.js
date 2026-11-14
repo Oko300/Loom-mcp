@@ -174,7 +174,7 @@ async function checkConnection(args) {
   if (!token) {
     return {
       connected: false,
-      message: 'No FlowDev token found. Visit flowdev.onrender.com/request to get your free token, then add it in Loom\'s credential settings in Anna.'
+      message: 'No FlowDev token found. Visit flowdev.onrender.com/login to sign in with GitHub and get your free token, then add it in Loom\'s credential settings in Anna.'
     };
   }
 
@@ -216,7 +216,7 @@ async function startSession(args) {
   if (!token) {
     return {
       success: false,
-      error: 'No FlowDev token. Visit flowdev.onrender.com/request to get your free access token, then add it in Loom\'s credential settings.'
+      error: 'No FlowDev token. Visit flowdev.onrender.com/login to sign in with GitHub and get your free access token, then add it in Loom\'s credential settings.'
     };
   }
 
