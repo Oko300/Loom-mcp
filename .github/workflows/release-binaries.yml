@@ -12,6 +12,8 @@ jobs:
   build-and-release:
     name: Build binaries & create release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -31,8 +33,6 @@ jobs:
 
       - name: Build binaries for all platforms
         working-directory: loom/executas/loom-agent
-        env:
-          VERSION: ${{ github.event.inputs.version }}
         run: |
           mkdir -p dist
 
@@ -56,17 +56,10 @@ jobs:
         env:
           VERSION: ${{ github.event.inputs.version }}
         run: |
-          # Linux x86_64 → tar.gz
           tar -czf "loom-agent-${VERSION}-linux-x86_64.tar.gz"   loom-agent-linux-x64
-
-          # macOS x86_64 → tar.gz
           tar -czf "loom-agent-${VERSION}-darwin-x86_64.tar.gz"  loom-agent-darwin-x86_64
-
-          # macOS arm64 → tar.gz
           tar -czf "loom-agent-${VERSION}-darwin-arm64.tar.gz"   loom-agent-darwin-arm64
-
-          # Windows x86_64 → zip
-          zip "loom-agent-${VERSION}-windows-x86_64.zip"         loom-agent-windows-x86_64.exe
+          zip      "loom-agent-${VERSION}-windows-x86_64.zip"    loom-agent-windows-x86_64.exe
 
           echo "--- Archives ---"
           ls -lh *.tar.gz *.zip
@@ -104,9 +97,6 @@ jobs:
 
             ### Verification
             Check `checksums-${{ github.event.inputs.version }}.txt` for SHA-256 hashes.
-
-            ### Installing
-            After download, place archives into `loom/executas/loom-agent/dist/` and run `anna-app apps publish`.
           files: |
             loom/executas/loom-agent/dist/loom-agent-${{ github.event.inputs.version }}-linux-x86_64.tar.gz
             loom/executas/loom-agent/dist/loom-agent-${{ github.event.inputs.version }}-darwin-arm64.tar.gz
