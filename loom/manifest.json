@@ -1,0 +1,28 @@
+{
+  "schema": 2,
+
+  "required_executas": [
+    {
+      "tool_id": "bundled:loom-agent",
+      "version": "latest"
+    }
+  ],
+
+  "ui": {
+    "bundle": {
+      "format": "static-spa",
+      "entry": "index.html",
+      "external_origins": []
+    },
+    "views": [
+      {
+        "name": "main",
+        "title": "Loom",
+        "default": true
+      }
+    ],
+    "host_api": {
+      "tools": ["required:bundled:loom-agent"]
+    }
+  }
+}

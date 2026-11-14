@@ -1,0 +1,84 @@
+{
+  "name": "loom-agent",
+  "display_name": "Loom Agent",
+  "version": "1.0.0",
+  "description": "Project memory engine and FlowDev workspace bridge. Remembers your project across every session.",
+  "tools": [
+    {
+      "name": "check_connection",
+      "description": "Verify the FlowDev VS Code extension is connected and the workspace bridge is live. Call this first before any other tool.",
+      "parameters": [],
+      "timeout": 30
+    },
+    {
+      "name": "get_memory",
+      "description": "Retrieve the stored project memory for this user. Returns the project name, stack, purpose, current focus, key decisions, and where the last session ended.",
+      "parameters": [],
+      "timeout": 30
+    },
+    {
+      "name": "start_session",
+      "description": "Start a Loom session — scans the connected VS Code workspace and uses the LLM to build or refresh the project memory. Must be called after check_connection confirms the workspace is connected.",
+      "parameters": [],
+      "timeout": 90
+    },
+    {
+      "name": "chat",
+      "description": "Send a message to Loom with full project context. The AI knows the project from memory and can read files, run commands, and give context-aware answers.",
+      "parameters": [
+        {
+          "name": "message",
+          "type": "string",
+          "description": "The developer's message or question.",
+          "required": true
+        },
+        {
+          "name": "conversationHistory",
+          "type": "array",
+          "items_type": "object",
+          "description": "Recent messages in this conversation for context continuity.",
+          "required": false,
+          "default": []
+        }
+      ],
+      "timeout": 60
+    },
+    {
+      "name": "update_memory",
+      "description": "Manually update one or more fields in the stored project memory.",
+      "parameters": [
+        {
+          "name": "updates",
+          "type": "object",
+          "description": "Key-value pairs to merge into the existing project memory.",
+          "required": true
+        }
+      ],
+      "timeout": 30
+    },
+    {
+      "name": "end_session",
+      "description": "End the current Loom session and optionally save a note about where the developer left off. Disconnects the FlowDev bridge.",
+      "parameters": [
+        {
+          "name": "sessionNote",
+          "type": "string",
+          "description": "A short note about what was done this session and what to pick up next time.",
+          "required": false
+        }
+      ],
+      "timeout": 30
+    }
+  ],
+  "credentials": [
+    {
+      "id": "flowdev_token",
+      "name": "FlowDev Token",
+      "description": "Your personal FlowDev token from flowdev.onrender.com/request. Required to connect Loom to your VS Code workspace.",
+      "required": true,
+      "sensitive": true
+    }
+  ],
+  "host_capabilities": ["sampling", "storage"],
+  "runtime": { "type": "local" }
+}

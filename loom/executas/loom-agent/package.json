@@ -1,0 +1,27 @@
+{
+  "name": "loom-agent",
+  "version": "1.0.0",
+  "description": "Loom backend executa — project memory engine and FlowDev workspace bridge",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "build": "pkg . --out-path dist"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.7.2"
+  },
+  "devDependencies": {
+    "@yao-pkg/pkg": "^5.11.5"
+  },
+  "pkg": {
+    "assets": ["manifest.json"],
+    "targets": [
+      "node22-linux-x64",
+      "node22-macos-x64",
+      "node22-macos-arm64",
+      "node22-win-x64"
+    ],
+    "outputPath": "dist"
+  }
+}

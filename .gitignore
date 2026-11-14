@@ -1,0 +1,13 @@
+node_modules/
+data/
+server/.env
+server/dev_out.txt
+server/dev_err.txt
+.anna/
+loom/.anna/
+loom/executas/loom-agent/dist/
+loom/executas/loom-agent/tmp/
+fix-bridge.ps1
+hello-flowdev.txt
+.DS_Store
+*.log

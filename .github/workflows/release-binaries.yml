@@ -1,0 +1,110 @@
+name: Release Loom Agent Binaries
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g. 1.0.0)'
+        required: true
+        default: '1.0.0'
+
+jobs:
+  build-and-release:
+    name: Build binaries & create release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install executa dependencies
+        working-directory: loom/executas/loom-agent
+        run: npm install
+
+      - name: Install @yao-pkg/pkg globally
+        run: npm install -g @yao-pkg/pkg
+
+      - name: Build binaries for all platforms
+        working-directory: loom/executas/loom-agent
+        run: |
+          mkdir -p dist
+          pkg . \
+            --targets node22-linux-x64,node22-macos-x64,node22-macos-arm64,node22-win-x64 \
+            --out-path dist \
+            --compress GZip
+
+      - name: Rename binaries to canonical names
+        working-directory: loom/executas/loom-agent/dist
+        run: |
+          # pkg outputs: loom-agent-linux, loom-agent-macos, loom-agent-macos-arm64, loom-agent-win.exe
+          # Rename to match executa.json paths exactly
+          mv loom-agent-linux            loom-agent-linux-x64        2>/dev/null || true
+          mv loom-agent-macos            loom-agent-darwin-x86_64    2>/dev/null || true
+          mv loom-agent-macos-arm64      loom-agent-darwin-arm64     2>/dev/null || true
+          mv loom-agent-win.exe          loom-agent-windows-x86_64.exe 2>/dev/null || true
+
+      - name: Package binaries as archives
+        working-directory: loom/executas/loom-agent/dist
+        env:
+          VERSION: ${{ github.event.inputs.version }}
+        run: |
+          # Linux x86_64 → tar.gz
+          tar -czf "loom-agent-${VERSION}-linux-x86_64.tar.gz"   loom-agent-linux-x64
+          # macOS x86_64 → tar.gz
+          tar -czf "loom-agent-${VERSION}-darwin-x86_64.tar.gz"  loom-agent-darwin-x86_64
+          # macOS arm64 → tar.gz
+          tar -czf "loom-agent-${VERSION}-darwin-arm64.tar.gz"   loom-agent-darwin-arm64
+          # Windows x86_64 → zip
+          zip "loom-agent-${VERSION}-windows-x86_64.zip"         loom-agent-windows-x86_64.exe
+
+      - name: Generate SHA-256 checksums
+        working-directory: loom/executas/loom-agent/dist
+        env:
+          VERSION: ${{ github.event.inputs.version }}
+        run: |
+          sha256sum \
+            "loom-agent-${VERSION}-linux-x86_64.tar.gz"   \
+            "loom-agent-${VERSION}-darwin-x86_64.tar.gz"  \
+            "loom-agent-${VERSION}-darwin-arm64.tar.gz"   \
+            "loom-agent-${VERSION}-windows-x86_64.zip"    \
+            > "checksums-${VERSION}.txt"
+          cat "checksums-${VERSION}.txt"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.event.inputs.version }}
+          name: Loom Agent v${{ github.event.inputs.version }}
+          body: |
+            ## Loom Agent v${{ github.event.inputs.version }}
+
+            Standalone binaries for the Loom executa — built with `@yao-pkg/pkg` on Node.js 22.
+
+            ### Platforms
+            | File | Platform |
+            |------|----------|
+            | `loom-agent-${{ github.event.inputs.version }}-linux-x86_64.tar.gz`  | Linux x86_64 (Anna Cloud Agent) |
+            | `loom-agent-${{ github.event.inputs.version }}-darwin-arm64.tar.gz`  | macOS Apple Silicon |
+            | `loom-agent-${{ github.event.inputs.version }}-darwin-x86_64.tar.gz` | macOS Intel |
+            | `loom-agent-${{ github.event.inputs.version }}-windows-x86_64.zip`   | Windows x86_64 |
+
+            ### Verification
+            Check `checksums-${{ github.event.inputs.version }}.txt` for SHA-256 hashes.
+
+            ### Installing
+            After download, place archives into `loom/executas/loom-agent/dist/` and run `anna-app apps publish`.
+          files: |
+            loom/executas/loom-agent/dist/loom-agent-${{ github.event.inputs.version }}-linux-x86_64.tar.gz
+            loom/executas/loom-agent/dist/loom-agent-${{ github.event.inputs.version }}-darwin-arm64.tar.gz
+            loom/executas/loom-agent/dist/loom-agent-${{ github.event.inputs.version }}-darwin-x86_64.tar.gz
+            loom/executas/loom-agent/dist/loom-agent-${{ github.event.inputs.version }}-windows-x86_64.zip
+            loom/executas/loom-agent/dist/checksums-${{ github.event.inputs.version }}.txt
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

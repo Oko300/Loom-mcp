@@ -1,0 +1,43 @@
+{
+  "tool_id": "tool-dev-loom-agent",
+  "name": "loom-agent",
+  "version": "1.0.0",
+  "distribution": {
+    "active": "binary",
+    "profiles": {
+      "local": {
+        "type": "local",
+        "run": {
+          "command": ["node", "index.js"]
+        },
+        "supports_protocol": true
+      },
+      "binary": {
+        "type": "binary",
+        "supports_protocol": true,
+        "binary_artifacts": {
+          "darwin-arm64": {
+            "path": "dist/loom-agent-{version}-darwin-arm64.tar.gz",
+            "entrypoint": "loom-agent",
+            "format": "tar.gz"
+          },
+          "darwin-x86_64": {
+            "path": "dist/loom-agent-{version}-darwin-x86_64.tar.gz",
+            "entrypoint": "loom-agent",
+            "format": "tar.gz"
+          },
+          "linux-x86_64": {
+            "path": "dist/loom-agent-{version}-linux-x86_64.tar.gz",
+            "entrypoint": "loom-agent",
+            "format": "tar.gz"
+          },
+          "windows-x86_64": {
+            "path": "dist/loom-agent-{version}-windows-x86_64.zip",
+            "entrypoint": "loom-agent.exe",
+            "format": "zip"
+          }
+        }
+      }
+    }
+  }
+}
