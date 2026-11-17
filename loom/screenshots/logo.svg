@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <!-- Background -->
+  <rect width="256" height="256" rx="52" fill="#161b22"/>
+
+  <!-- Outer ring -->
+  <circle cx="128" cy="108" r="62" fill="none" stroke="#6366f1" stroke-width="6" opacity="0.25"/>
+  <!-- Middle ring -->
+  <circle cx="128" cy="108" r="44" fill="none" stroke="#6366f1" stroke-width="6" opacity="0.5"/>
+  <!-- Inner ring -->
+  <circle cx="128" cy="108" r="26" fill="none" stroke="#6366f1" stroke-width="6" opacity="0.85"/>
+  <!-- Core dot -->
+  <circle cx="128" cy="108" r="10" fill="#6366f1"/>
+
+  <!-- Thread line unwinding down -->
+  <path d="M128 134 Q148 155 138 175 Q128 192 118 185 Q105 176 115 162 Q122 150 136 158" fill="none" stroke="#6366f1" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+  <!-- Thread tail -->
+  <path d="M136 158 Q155 168 160 185" fill="none" stroke="#6366f1" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- Word mark -->
+  <text x="128" y="226" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="30" font-weight="800" fill="#e6edf3" text-anchor="middle" letter-spacing="3">LOOM</text>
+</svg>
