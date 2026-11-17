@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+  <rect width="1200" height="750" fill="#0d1117"/>
+  <!-- Header -->
+  <rect width="1200" height="48" fill="#161b22"/>
+  <rect x="0" y="47" width="1200" height="1" fill="#30363d"/>
+  <text x="20" y="30" font-family="system-ui,sans-serif" font-size="15" font-weight="700" fill="#e6edf3">🧵 <tspan fill="#6366f1">Loom</tspan></text>
+  <rect x="1030" y="12" width="158" height="24" rx="12" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+  <circle cx="1046" cy="24" r="4" fill="#4ade80"/>
+  <text x="1056" y="29" font-family="system-ui,sans-serif" font-size="11" fill="#8b949e">Session active</text>
+  <!-- Side panel -->
+  <rect x="0" y="48" width="260" height="702" fill="#161b22"/>
+  <rect x="259" y="48" width="1" height="702" fill="#30363d"/>
+  <text x="16" y="78" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#8b949e" letter-spacing="0.5">PROJECT MEMORY</text>
+  <rect x="0" y="86" width="260" height="1" fill="#30363d"/>
+  <!-- Side fields -->
+  <text x="16" y="110" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#8b949e" letter-spacing="0.5">PROJECT</text>
+  <text x="16" y="128" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#e6edf3">Loom MCP</text>
+  <text x="16" y="158" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#8b949e" letter-spacing="0.5">STACK</text>
+  <rect x="16" y="166" width="58" height="18" rx="3" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+  <text x="45" y="179" font-family="monospace,sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">Node.js</text>
+  <rect x="82" y="166" width="68" height="18" rx="3" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+  <text x="116" y="179" font-family="monospace,sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">Socket.IO</text>
+  <rect x="158" y="166" width="68" height="18" rx="3" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+  <text x="192" y="179" font-family="monospace,sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">Anna SDK</text>
+  <rect x="16" y="198" width="58" height="18" rx="3" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+  <text x="45" y="211" font-family="monospace,sans-serif" font-size="10" fill="#8b949e" text-anchor="middle">FlowDev</text>
+  <text x="16" y="236" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#8b949e" letter-spacing="0.5">CURRENT FOCUS</text>
+  <text x="16" y="254" font-family="system-ui,sans-serif" font-size="12" fill="#e6edf3">Binary packaging &amp;</text>
+  <text x="16" y="270" font-family="system-ui,sans-serif" font-size="12" fill="#e6edf3">Anna platform publish</text>
+  <text x="16" y="300" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#8b949e" letter-spacing="0.5">LEFT OFF</text>
+  <text x="16" y="318" font-family="system-ui,sans-serif" font-size="12" fill="#e6edf3">Uploaded binaries to</text>
+  <text x="16" y="334" font-family="system-ui,sans-serif" font-size="12" fill="#e6edf3">Anna, running apps cut</text>
+  <!-- End session button -->
+  <rect x="10" y="700" width="240" height="34" rx="6" fill="transparent" stroke="#30363d" stroke-width="1"/>
+  <text x="130" y="722" font-family="system-ui,sans-serif" font-size="12" fill="#8b949e" text-anchor="middle">← End session</text>
+  <!-- Chat panel -->
+  <!-- AI welcome message -->
+  <rect x="280" y="68" width="28" height="28" rx="5" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+  <text x="294" y="87" font-family="system-ui,sans-serif" font-size="13" text-anchor="middle">🧵</text>
+  <rect x="316" y="64" width="560" height="84" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="332" y="86" font-family="system-ui,sans-serif" font-size="13" fill="#e6edf3">Welcome back to Loom MCP.</text>
+  <text x="332" y="106" font-family="system-ui,sans-serif" font-size="13" fill="#e6edf3">Where you left off: Uploaded binaries to Anna, running apps cut.</text>
+  <text x="332" y="126" font-family="system-ui,sans-serif" font-size="13" fill="#e6edf3">What would you like to work on today?</text>
+  <!-- User message -->
+  <rect x="876" y="172" width="28" height="28" rx="5" fill="#6366f1"/>
+  <text x="890" y="191" font-family="system-ui,sans-serif" font-size="13" text-anchor="middle">👤</text>
+  <rect x="596" y="168" width="272" height="36" rx="8" fill="#6366f1"/>
+  <text x="732" y="191" font-family="system-ui,sans-serif" font-size="13" fill="#fff" text-anchor="middle">What files does the executa expose?</text>
+  <!-- AI response -->
+  <rect x="280" y="224" width="28" height="28" rx="5" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+  <text x="294" y="243" font-family="system-ui,sans-serif" font-size="13" text-anchor="middle">🧵</text>
+  <rect x="316" y="220" width="580" height="130" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="332" y="242" font-family="system-ui,sans-serif" font-size="13" fill="#e6edf3">The executa (index.js) exposes 6 tools to Anna:</text>
+  <text x="332" y="264" font-family="monospace,sans-serif" font-size="12" fill="#6366f1">check_connection</text>
+  <text x="470" y="264" font-family="system-ui,sans-serif" font-size="12" fill="#8b949e"> — verify FlowDev VS Code bridge is live</text>
+  <text x="332" y="284" font-family="monospace,sans-serif" font-size="12" fill="#6366f1">get_memory</text>
+  <text x="434" y="284" font-family="system-ui,sans-serif" font-size="12" fill="#8b949e"> — load persistent project memory from Anna KV</text>
+  <text x="332" y="304" font-family="monospace,sans-serif" font-size="12" fill="#6366f1">start_session</text>
+  <text x="446" y="304" font-family="system-ui,sans-serif" font-size="12" fill="#8b949e"> — scan workspace, build AI memory via LLM</text>
+  <text x="332" y="324" font-family="monospace,sans-serif" font-size="12" fill="#6366f1">chat</text>
+  <text x="366" y="324" font-family="system-ui,sans-serif" font-size="12" fill="#8b949e"> — AI conversation with full project context injected</text>
+  <text x="332" y="344" font-family="monospace,sans-serif" font-size="12" fill="#6366f1">update_memory / end_session</text>
+  <text x="556" y="344" font-family="system-ui,sans-serif" font-size="12" fill="#8b949e"> — manual updates &amp; session close</text>
+  <!-- User message 2 -->
+  <rect x="876" y="372" width="28" height="28" rx="5" fill="#6366f1"/>
+  <text x="890" y="391" font-family="system-ui,sans-serif" font-size="13" text-anchor="middle">👤</text>
+  <rect x="604" y="368" width="264" height="36" rx="8" fill="#6366f1"/>
+  <text x="736" y="391" font-family="system-ui,sans-serif" font-size="13" fill="#fff" text-anchor="middle">How is Anna LLM used here?</text>
+  <!-- AI response 2 -->
+  <rect x="280" y="424" width="28" height="28" rx="5" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+  <text x="294" y="443" font-family="system-ui,sans-serif" font-size="13" text-anchor="middle">🧵</text>
+  <rect x="316" y="420" width="580" height="110" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="332" y="442" font-family="system-ui,sans-serif" font-size="13" fill="#e6edf3">Anna's LLM is used in two places:</text>
+  <text x="332" y="464" font-family="system-ui,sans-serif" font-size="13" fill="#8b949e">1. start_session: After scanning your workspace (file tree + git status),</text>
+  <text x="332" y="482" font-family="system-ui,sans-serif" font-size="13" fill="#8b949e">   the LLM synthesizes a structured memory JSON — project name,</text>
+  <text x="332" y="500" font-family="system-ui,sans-serif" font-size="13" fill="#8b949e">   stack, current focus, key decisions, where you left off.</text>
+  <text x="332" y="518" font-family="system-ui,sans-serif" font-size="13" fill="#8b949e">2. chat: Every message injects the full memory into the system</text>
+  <text x="332" y="536" font-family="system-ui,sans-serif" font-size="13" fill="#8b949e">   prompt so the AI has complete project context from the start.</text>
+  <!-- Chat input bar -->
+  <rect x="260" y="698" width="940" height="52" fill="#161b22"/>
+  <rect x="260" y="698" width="940" height="1" fill="#30363d"/>
+  <rect x="276" y="711" width="820" height="30" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="290" y="731" font-family="system-ui,sans-serif" font-size="13" fill="#8b949e">Ask Loom anything about your project…</text>
+  <rect x="1104" y="711" width="82" height="30" rx="6" fill="#6366f1"/>
+  <text x="1145" y="731" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">Send</text>
+</svg>
