@@ -1,7 +1,7 @@
 {
   "name": "loom-agent",
   "display_name": "Loom Agent",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "Project memory engine and FlowDev workspace bridge. Remembers your project across every session.",
   "tools": [
     {
@@ -80,5 +80,5 @@
     }
   ],
   "host_capabilities": ["sampling", "storage"],
-  "runtime": { "type": "local" }
+  "runtime": { "type": "binary" }
 }

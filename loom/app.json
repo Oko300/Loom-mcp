@@ -3,7 +3,7 @@
   "name": "Loom",
   "tagline": "The AI coding assistant that remembers your project",
   "description": "Loom is an AI-powered coding assistant that builds and maintains a persistent memory of your project using Anna's LLM.\n\nHow the AI works:\n• start_session: Loom scans your VS Code workspace (file structure, git history, open files) and uses Anna's LLM to synthesize a structured project memory — your stack, current focus, key decisions, what you tried and abandoned, and exactly where you left off.\n• chat: Every conversation injects the full AI-generated memory into the system prompt, giving the LLM complete project context from the first message. The memory auto-updates every 4 exchanges.\n\nThe problem it solves: Every AI coding tool today forgets everything when the session ends. Developers waste time re-explaining their stack, decisions, and progress — every single time. Loom fixes this permanently.\n\nRequires: FlowDev VS Code extension (free) to bridge Loom with your local workspace.",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "category": "developer-tools",
   "icon": "🧵",
   "author": "FlowDev",

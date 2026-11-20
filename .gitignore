@@ -7,6 +7,8 @@ server/dev_err.txt
 loom/.anna/
 loom/executas/loom-agent/dist/
 loom/executas/loom-agent/tmp/
+loom/executas/**/*.tar.gz
+loom/executas/**/*.zip
 fix-bridge.ps1
 hello-flowdev.txt
 .DS_Store

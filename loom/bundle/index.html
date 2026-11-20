@@ -518,22 +518,47 @@ window.autoResize = function(el) {
 };
 
 // ── Boot ───────────────────────────────────────────────────────────────────
+// ALWAYS show connect view immediately — never leave the user on a black screen.
+// Once the SDK + executa are ready we'll transition automatically.
+showView('connect');
 setStatus('busy', 'Initializing…');
-try {
-  anna = await AnnaAppRuntime.connect();
-  // Auto-check connection on load
-  const result = await invoke('check_connection');
-  if (result && result.connected) {
-    setStatus('ok', 'VS Code Connected');
-    await loadMemoryView();
-  } else {
+
+(async () => {
+  try {
+    // Connect to Anna SDK — with a hard 12-second timeout so we never hang
+    anna = await Promise.race([
+      AnnaAppRuntime.connect(),
+      new Promise((_, rej) =>
+        setTimeout(() => rej(new Error('Anna SDK connect timed out')), 12000))
+    ]);
+
+    setStatus('busy', 'Checking connection…');
+
+    // Auto-check if the user already has FlowDev connected
+    let result;
+    try {
+      result = await Promise.race([
+        invoke('check_connection'),
+        new Promise((_, rej) =>
+          setTimeout(() => rej(new Error('Timed out')), 20000))
+      ]);
+    } catch {
+      result = { connected: false };
+    }
+
+    if (result && result.connected) {
+      setStatus('ok', 'VS Code Connected');
+      await loadMemoryView();
+    } else {
+      setStatus('', 'Setup required');
+      showView('connect');
+    }
+  } catch (e) {
+    // SDK failed or timed out — stay on connect view, let user retry manually
     setStatus('', 'Setup required');
     showView('connect');
   }
-} catch(e) {
-  setStatus('', 'Setup required');
-  showView('connect');
-}
+})();
 </script>
 </body>
 </html>

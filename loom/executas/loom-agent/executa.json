@@ -2,7 +2,7 @@
   "tool_id": "tool-dev-loom-agent",
   "slug": "loom-agent",
   "name": "loom-agent",
-  "version": "1.0.2",
+  "version": "1.0.6",
   "distribution": {
     "active": "binary",
     "profiles": {
